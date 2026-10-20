@@ -22,7 +22,7 @@ jobs:
         run: |
           set -euo pipefail
           git clone --depth 1 https://github.com/antlis/tg-streaming-bot.git /tmp/tg-streaming-bot
-          cp -a /tmp/tg-streaming-bot/. .
+          rsync -a --exclude='.git' /tmp/tg-streaming-bot/ ./
           python apply_arabic_aliases.py
       - name: Commit imported source and Arabic aliases
         shell: bash
